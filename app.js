@@ -13,7 +13,7 @@
                 var itemList = $scope.items.split(',');
                 for(var i = 0; i<itemList.length; i++)
                 {
-                    if(itemList[i]==""||" ")
+                    if(itemList[i]=== "" || itemList[i]== " ")
                     {
                         itemList.splice(i,1);
                         console.log(itemList);
