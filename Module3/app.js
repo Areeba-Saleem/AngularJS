@@ -66,7 +66,7 @@ function NarrowItDownController(NarrowItDownFactory, $timeout){
          {
              Ctrl.message = "Error Occurred! Can't retrieve the list";
          });
-        }, 2000);
+        }, 3000);
         }
         else{
             Ctrl.message = "Please enter an item to search!";
