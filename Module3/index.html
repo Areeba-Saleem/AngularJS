@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Narrow Down Your Menu Choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">        
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src = "jquery-3.3.1.min.js"></script>
+    <script src = "angular.min.js"></script>
+    <script src = "app.js"></script>
+  </head>
+<body ng-app = "NarrowItDownApp">
+   <div class="container" ng-controller = "NarrowItDownController as Ctrl">
+    <h1>Narrow Down Your Chinese Menu Choice</h1>
+
+    <div class="form-group">
+      <input type="text" placeholder="search term" class="form-control" ng-model = "Ctrl.itemToSearch">
+    </div>
+    <div class="form-group narrow-button">
+      <button class="btn btn-primary" ng-click = "Ctrl.getMatchedMenuItems()">Narrow It Down For Me!</button>
+    </div> 
+    <br />
+    <br />
+    <br />
+    <found-items-directive 
+    
+    found-items = "Ctrl.foundItems" 
+    title = '{{Ctrl.title}}  (Items: {{Ctrl.foundItems.length}})' 
+    remove = "Ctrl.removeItem(index)" >
+  </found-items-directive>
+  <div class = "message">
+    {{Ctrl.message}}
+    </div>
+</div>
+ 
+</body>
+</html>

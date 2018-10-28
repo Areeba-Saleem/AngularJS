@@ -1,0 +1,10 @@
+
+<div ng-show = "searched.foundItems.length">
+<h3>{{searched.title}}</h3>
+<ol>
+<li ng-repeat = "item in searched.foundItems"><list-item></list-item>
+    <button class= "btn btn-danger" ng-click = "searched.remove({index: $index});">Don't want this!</button>
+
+</li>
+</ol>
+</div>
