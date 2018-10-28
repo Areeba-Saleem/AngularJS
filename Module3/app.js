@@ -86,7 +86,7 @@ function MenuSearchService($http){
         service.retrieveList = function(){
             var response = $http({
                 method:"GET",
-                url: "http://localhost:3000/restaurantMenuItems.json"
+                url: "https://areeba-saleem.github.io/AngularJS/Module3/restaurantMenuItems.json"
             });
             return response;
         };
