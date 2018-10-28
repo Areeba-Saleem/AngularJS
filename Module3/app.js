@@ -59,7 +59,7 @@ function NarrowItDownController(NarrowItDownFactory, $timeout){
               if(!Ctrl.foundItems.length){
                   Ctrl.message = "Sorry! Item not available";
               }
-              console.log(Ctrl.foundItems);
+            
             
          })
          .catch(function(response)
