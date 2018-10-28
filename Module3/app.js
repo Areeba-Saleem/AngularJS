@@ -6,7 +6,7 @@
     .directive('foundItemsDirective', narrowItDownDirective)
     .directive('listItem', DisplayItemDirective);
 
-    NarrowItDownController.$inject = ['NarrowItDownFactory'];
+    NarrowItDownController.$inject = ['NarrowItDownFactory', '$timeout'];
 /********************************* Directive Funtion ********************************/
 function DisplayItemDirective(){
     var ddo = {
@@ -17,7 +17,7 @@ function DisplayItemDirective(){
 };    
 function narrowItDownDirective(){
         var ddo = {
-            templateUrl: 'narrowItDownDirective.html',
+            templateUrl: 'https://areeba-saleem.github.io/AngularJS/Module3/narrowItDownDirective.html',
             controller: ControllerFunction,
             bindToController: true,
             controllerAs: 'searched',
@@ -35,7 +35,7 @@ function narrowItDownDirective(){
     };
 /********************************* Controller Funtion ********************************/
   
-function NarrowItDownController(NarrowItDownFactory){
+function NarrowItDownController(NarrowItDownFactory, $timeout){
          var Ctrl = this;
          var MenuSearchService = NarrowItDownFactory();
          Ctrl.title = "Narrowed Down List";
@@ -44,7 +44,9 @@ function NarrowItDownController(NarrowItDownFactory){
             Ctrl.foundItems = [];
              if(Ctrl.itemToSearch.length)
            {var promise =  MenuSearchService.retrieveList();
-            promise.then(function(response){
+            
+            $timeout(function(){
+                promise.then(function(response){
                 Ctrl.message = "";
                Ctrl.menuItems = response.data.menu_items;
                console.log(Ctrl.menuItems);
@@ -64,6 +66,7 @@ function NarrowItDownController(NarrowItDownFactory){
          {
              Ctrl.message = "Error Occurred! Can't retrieve the list";
          });
+        }, 3000);
         }
         else{
             Ctrl.message = "Please enter an item to search!";
@@ -86,7 +89,7 @@ function MenuSearchService($http){
         service.retrieveList = function(){
             var response = $http({
                 method:"GET",
-                url: "https://github.com/Areeba-Saleem/AngularJS/blob/master/Module3/restaurantMenuItems.json"
+                url: "https://davids-restaurant.herokuapp.com/menu_items.json"
             });
             return response;
         };
